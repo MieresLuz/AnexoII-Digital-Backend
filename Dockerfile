@@ -1,8 +1,8 @@
-FROM gradle-8.13-jdk17-alpine
+FROM gradle:8.3.0-jdk17-alpine
 
 COPY . .
 
-RUN gradle build
+RUN gradle build --no-daemon
 
 EXPOSE 8080
 
