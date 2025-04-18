@@ -1,9 +1,9 @@
 package LedLabs.AnexoIIDigital.modelos;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Estudiante {
@@ -20,6 +20,9 @@ public class Estudiante {
     private String instituto;
     private String carrera;
     private String legajo;
+
+    @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
     public Estudiante() {
     }
@@ -111,4 +114,18 @@ public class Estudiante {
     public void setLegajo(String legajo) {
         this.legajo = legajo;
     }
+
+    public List<Inscripcion> getInscripciones() {
+        return inscripciones;
+    }
+
+    public void setInscripciones(List<Inscripcion> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
+
+    public void addInscripcion(Inscripcion inscripcion) {
+        inscripciones.add(inscripcion);
+        inscripcion.setEstudiante(this);
+    }
+
 }

@@ -8,4 +8,5 @@ public interface AuthServices {
     String login(LoginDTO loginDTO);
     Object registroUsuario(RegistroDTO registroDTO, String tipoUsuario);  // Unificado
     EstudianteDTO currentEstudiante(String email);
+
 }

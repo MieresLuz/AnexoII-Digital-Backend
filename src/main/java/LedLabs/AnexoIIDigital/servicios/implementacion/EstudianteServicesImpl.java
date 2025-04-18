@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 public class EstudianteServicesImpl implements EstudianteServices {
     @Autowired
     private EstudianteRepository estudianteRepository;
+
     @Override
     public Estudiante findByEmail(String email) {
         return estudianteRepository.findByEmail(email); // No se utiliza orElse(null) aquí
     }
+
 }

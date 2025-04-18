@@ -54,7 +54,7 @@ public class WebConfig {
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 .requestMatchers("/api/auth/login", "/api/auth/register", "/h2-console/**").permitAll()
-                                .requestMatchers("/api/auth/current").hasAnyRole("ESTUDIANTE")
+                                .requestMatchers("/api/auth/current", "api/inscripciones/existe/{dni}", "api/inscripcion/registrar").hasAnyRole("ESTUDIANTE")
                                 .anyRequest().authenticated()
                 )
 
