@@ -21,7 +21,7 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         //Se establecen las rutas permitidas, que nos pueden pegar a nuestra app
-        configuration.setAllowedOrigins(Arrays.asList(new String[]{"http://localhost:3000", "http://localhost:5173"}));
+        configuration.setAllowedOrigins(Arrays.asList(new String[]{"http://localhost:5173", "https://anexoii-digital-reacte.onrender.com"}));
 
         //Se establecen los métodos HTTP permitidos utilizando
         configuration.setAllowedMethods(Arrays.asList(new String[]{"GET", "POST", "PUT", "DELETE"}));
