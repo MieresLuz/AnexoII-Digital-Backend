@@ -4,6 +4,7 @@ import LedLabs.AnexoIIDigital.filtros.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -53,7 +54,14 @@ public class WebConfig {
                         HeadersConfigurer.FrameOptionsConfig::disable))
                 .authorizeHttpRequests((authorize) ->
                         authorize
-                                .requestMatchers("/api/auth/login", "/api/auth/register", "/h2-console/**").permitAll()
+                                .requestMatchers(
+                                        HttpMethod.GET,
+                                        "/index.html",
+                                        "/static/**",
+                                        "/favicon.ico",
+                                        "/manifest.json",
+                                        "/", "/registro", "/anexoII", "/h2-console/**"
+                                ).permitAll()
                                 .requestMatchers("/api/auth/current", "api/inscripciones/existe/{dni}", "api/inscripcion/registrar").hasAnyRole("ESTUDIANTE")
                                 .anyRequest().authenticated()
                 )
