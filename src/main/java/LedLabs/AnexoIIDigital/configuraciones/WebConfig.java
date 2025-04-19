@@ -55,7 +55,7 @@ public class WebConfig {
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 .requestMatchers(
-                                        HttpMethod.GET,
+                                        HttpMethod.GET.POST,
                                         "/index.html",
                                         "/static/**",
                                         "/favicon.ico",
