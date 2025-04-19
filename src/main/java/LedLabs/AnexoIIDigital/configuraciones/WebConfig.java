@@ -55,17 +55,17 @@ public class WebConfig {
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 .requestMatchers(
-                                        HttpMethod.GET.POST,
+                                        HttpMethod.GET,
                                         "/index.html",
                                         "/static/**",
                                         "/favicon.ico",
                                         "/manifest.json",
-                                        "/", "/registro", "/anexoII", "/h2-console/**"
+                                        "/", "/registro", "/anexoII"
                                 ).permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/auth/register", "/h2-console/**").permitAll()
                                 .requestMatchers("/api/auth/current", "api/inscripciones/existe/{dni}", "api/inscripcion/registrar").hasAnyRole("ESTUDIANTE")
                                 .anyRequest().authenticated()
-                )
-
+                                )
 
                 //Se agrega el filtro de autenticación antes del filtro de autenticación de recursos
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
